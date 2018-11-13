@@ -1,6 +1,7 @@
 package com.example.max.a019_sqlite_alpha.Activity;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
@@ -65,6 +66,31 @@ public class MainActivity extends AppCompatActivity {
         descripcion.setText("");
         precio.setText("");
         Toast.makeText(this,"Se cargaron los datos del Articulo",Toast.LENGTH_LONG).show();
+    }
+    public void consultaPorCodigo(View v){
+        AdminSQLiteOpenHelper Admin = new AdminSQLiteOpenHelper(this,"Administracion",null,1);
+        /**crear un objeto de la clase AdminSQLiteOpenHelper */
+
+        SQLiteDatabase db = Admin.getWritableDatabase();
+        /**obtener una referencia de la base de datos llamando al método getWritableDatabase*/
+
+        String cod = codigo.getText().toString();
+        Cursor fila = db.rawQuery("SELECT Descripcion,Precio FROM Articulos WHERE Codigo="+cod,null);
+        /**Definimos una variable de la clase Cursor y la inicializamos con el valor devuelto por el método llamado rawQuery.
+         La clase Cursor almacena en este caso una fila o cero filas*/
+
+        if (fila.moveToFirst()){
+            /**El método moveToFirst() de la clase Cursor, retorna true en caso de exista un articulo con el codigo ingresado,
+             * en caso contrario retorna cero. */
+
+            descripcion.setText(fila.getString(0));
+            /**Para recuperar los datos que queremos consultar llamamos
+             * al método getString y le pasamos la posición del campo a recuperar*/
+
+            precio.setText(fila.getString(1));
+        } else
+            Toast.makeText(this,"No existe un articulo con dicho codigo",Toast.LENGTH_LONG).show();
+        db.close();
     }
 
 
