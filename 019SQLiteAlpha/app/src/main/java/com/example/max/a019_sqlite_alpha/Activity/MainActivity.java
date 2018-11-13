@@ -92,6 +92,56 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"No existe un articulo con dicho codigo",Toast.LENGTH_LONG).show();
         db.close();
     }
+    public void consultaPorDescripcion(View v){
+        AdminSQLiteOpenHelper Admin = new AdminSQLiteOpenHelper(this,"Administracion",null,1);
 
+        SQLiteDatabase db = Admin.getWritableDatabase();
 
+        String descri = descripcion.getText().toString();
+        Cursor fila = db.rawQuery("SELECT Codigo,Precio FROM Articulos WHERE Descripcion='"+ descri +"'",null);
+        /**en el where de la clausula SQL hemos dispuesto comillas simples entre el contenido
+         *  de la variable descri.Esto es obligatorio para los campos de tipo text*/
+        if (fila.moveToFirst()){
+            codigo.setText(fila.getString(0));
+            precio.setText(fila.getString(1));
+        } else
+            Toast.makeText(this,"No existe un articulo con dicha descripcion",Toast.LENGTH_LONG).show();
+        db.close();
+    }
+    public void bajaPorCodigo(View v){
+        AdminSQLiteOpenHelper Admin = new AdminSQLiteOpenHelper(this,"Administracion",null,1);
+        SQLiteDatabase db = Admin.getWritableDatabase();
+
+        String cod =codigo.getText().toString();
+        int cant = db.delete("Articulos","Codigo="+ cod,null);
+        db.close();
+        codigo.setText("");
+        descripcion.setText("");
+        precio.setText("");
+
+        if (cant==1){
+            Toast.makeText(this,"Se borro el articulo con dicho codigo",Toast.LENGTH_LONG).show();
+        } else
+            Toast.makeText(this,"No existe un articulo con dicho codigo",Toast.LENGTH_LONG).show();
+    }
+    public void modificacion(View v){
+        AdminSQLiteOpenHelper Admin= new AdminSQLiteOpenHelper(this,"Administracion",null,1);
+        SQLiteDatabase db = Admin.getWritableDatabase();
+
+        String cod = codigo.getText().toString();
+        String descri = descripcion.getText().toString();
+        String pre = precio.getText().toString();
+
+        ContentValues registroCV = new ContentValues();
+        registroCV.put("codigo",cod);
+        registroCV.put("descripcion",descri);
+        registroCV.put("precio",pre);
+
+        int cant = db.update("Articulos",registroCV,"Codigo="+ cod,null);
+        db.close();
+        if (cant==1) {
+            Toast.makeText(this, "Se modificaron los datos", Toast.LENGTH_LONG).show();
+            } else
+                Toast.makeText(this,"No existe un articulo con el codigo ingresadfo",Toast.LENGTH_LONG).show();
+    }
 }

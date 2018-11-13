@@ -22,10 +22,9 @@
         android:id="@+id/editIngDescripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
-        android:hint="Ingrse Descripcion"
+        android:hint="Ingrese Descripcion"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/editIngCodigo"
         app:layout_constraintTop_toBottomOf="@+id/editIngCodigo" />
@@ -68,6 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:onClick="consultaPorDescripcion"
         android:text="Consulta por Descripcion"
         app:layout_constraintStart_toStartOf="@+id/buttConCodigo"
         app:layout_constraintTop_toBottomOf="@+id/buttModificacion" />
@@ -78,6 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="195dp"
+        android:onClick="bajaPorCodigo"
         android:text="Baja por codigo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -87,6 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="13dp"
+        android:onClick="modificacion"
         android:text="Modificacion"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttConCodigo"
         app:layout_constraintEnd_toEndOf="parent" />
