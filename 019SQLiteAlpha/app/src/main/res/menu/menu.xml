@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/AgregarId"
+        android:title="Agregar"/>
+    <item android:id="@+id/SalirId"
+        android:title="Salir"
+        android:icon="@mipmap/cthulhu"/>
+</menu>

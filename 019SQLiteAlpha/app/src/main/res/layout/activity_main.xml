@@ -6,90 +6,115 @@
     android:layout_height="match_parent"
     tools:context=".Activity.MainActivity">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar"></include>
+
     <EditText
         android:id="@+id/editIngCodigo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="46dp"
         android:ems="10"
         android:hint="Ingrese Codigo"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/editIngPrecio"
-        app:layout_constraintStart_toStartOf="@+id/editIngPrecio"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="78dp"
+        tools:layout_editor_absoluteY="45dp" />
 
     <EditText
         android:id="@+id/editIngDescripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Ingrese Descripcion"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/editIngCodigo"
-        app:layout_constraintTop_toBottomOf="@+id/editIngCodigo" />
+        tools:layout_editor_absoluteX="78dp"
+        tools:layout_editor_absoluteY="130dp" />
 
     <EditText
         android:id="@+id/editIngPrecio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="240dp"
         android:ems="10"
         android:hint="Ingrese Precio"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/buttBaja"
-        app:layout_constraintStart_toStartOf="@+id/buttAlta" />
+        tools:layout_editor_absoluteX="78dp"
+        tools:layout_editor_absoluteY="202dp" />
 
     <Button
         android:id="@+id/buttAlta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="28dp"
         android:onClick="alta"
         android:text="Alta"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editIngPrecio" />
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="277dp" />
 
     <Button
         android:id="@+id/buttConCodigo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
         android:onClick="consultaPorCodigo"
         android:text="Consulta por codigo"
-        app:layout_constraintStart_toStartOf="@+id/buttAlta"
-        app:layout_constraintTop_toBottomOf="@+id/buttAlta" />
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="344dp" />
 
     <Button
         android:id="@+id/buttConDescripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:onClick="consultaPorDescripcion"
         android:text="Consulta por Descripcion"
-        app:layout_constraintStart_toStartOf="@+id/buttConCodigo"
-        app:layout_constraintTop_toBottomOf="@+id/buttModificacion" />
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="416dp" />
 
     <Button
         android:id="@+id/buttBaja"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="195dp"
         android:onClick="bajaPorCodigo"
         android:text="Baja por codigo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        tools:layout_editor_absoluteX="250dp"
+        tools:layout_editor_absoluteY="488dp" />
 
     <Button
         android:id="@+id/buttModificacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="13dp"
         android:onClick="modificacion"
         android:text="Modificacion"
-        app:layout_constraintBaseline_toBaselineOf="@+id/buttConCodigo"
-        app:layout_constraintEnd_toEndOf="parent" />
+        tools:layout_editor_absoluteX="276dp"
+        tools:layout_editor_absoluteY="344dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top" />
 </android.support.constraint.ConstraintLayout>

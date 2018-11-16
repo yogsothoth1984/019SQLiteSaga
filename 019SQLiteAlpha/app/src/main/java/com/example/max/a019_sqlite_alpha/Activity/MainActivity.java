@@ -3,13 +3,13 @@ package com.example.max.a019_sqlite_alpha.Activity;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import com.example.max.a019_sqlite_alpha.Dao.AdminSQLiteOpenHelper;
 import com.example.max.a019_sqlite_alpha.R;
@@ -17,6 +17,7 @@ import com.example.max.a019_sqlite_alpha.R;
 public class MainActivity extends AppCompatActivity {
     private EditText codigo, descripcion, precio;
     private Button bAlta, bCodigo, bDescripcion, bBaja, bModificacion;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
         bDescripcion=findViewById(R.id.buttConDescripcion);
         bBaja=findViewById(R.id.buttBaja);
         bModificacion=findViewById(R.id.buttModificacion);
+        toolbar=findViewById(R.id.toolbarId);
+        /**TOOLBAR*/
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setLogo(R.mipmap.cthulhu);
+        getSupportActionBar().setTitle("SQLite");
     }
     public void alta(View v){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Administracion",null,1);
